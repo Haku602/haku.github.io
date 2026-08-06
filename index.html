@@ -19,6 +19,8 @@ nav .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 1
 nav .nav-links a:hover { color: var(--accent); }
 main { margin-top: var(--nav-height); }
 .section { padding: 100px 0; position: relative; }
+.section-alt { background: #F2F4F7; }
+.section-alt + .section-alt { background: var(--bg); }
 .section-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 40px; position: relative; }
 main::before { content: ''; position: fixed; top: var(--nav-height); bottom: 0; left: calc((100vw - var(--content-width)) / 2 + 40px - 24px); width: 1px; background: var(--border); z-index: 0; pointer-events: none; }
 .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 8px; }
@@ -32,6 +34,7 @@ main::before { content: ''; position: fixed; top: var(--nav-height); bottom: 0; 
 .hero-text { flex: 1; }
 .hero-name { font-family: "Noto Serif SC", serif; font-size: 44px; font-weight: 700; line-height: 1.2; letter-spacing: 0.04em; margin-bottom: 16px; }
 .hero-intro { color: var(--text-muted); font-size: 15px; max-width: 460px; line-height: 1.8; }
+.hero-intro.hero-hobby { font-size: 13px; opacity: 0.72; margin-top: 10px; }
 .hero-meta { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
 .hero-meta a { font-size: 13px; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
 .hero-meta a:hover { border-bottom-color: var(--accent); }
@@ -39,7 +42,8 @@ main::before { content: ''; position: fixed; top: var(--nav-height); bottom: 0; 
 .skill-card { background: var(--bg-card); border-radius: 6px; padding: 28px 24px; display: flex; align-items: center; gap: 16px; border: 1px solid transparent; transition: border-color 0.2s; }
 .skill-card:hover { border-color: var(--border); }
 .skill-icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.skill-icon svg { width: 24px; height: 24px; stroke: var(--accent); }
+.skill-icon svg { width: 26px; height: 26px; stroke: var(--accent); }
+.skill-icon .icon-text { font-family: "Noto Serif SC", serif; font-size: 22px; font-weight: 700; color: var(--accent); line-height: 1; }
 .skill-name { font-size: 14px; font-weight: 600; color: var(--text); }
 .skill-group-label { font-family: "Noto Serif SC", serif; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.06em; }
 .dots-loading { display: inline; }
@@ -65,9 +69,6 @@ main::before { content: ''; position: fixed; top: var(--nav-height); bottom: 0; 
 .flow-step { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
 .flow-num { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; }
 .flow-text { font-size: 14px; color: var(--text); line-height: 1.6; }
-.card-slider-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
-.card-slider-row .file-card { margin: 0; }
-@media (max-width: 768px) { .card-slider-row { grid-template-columns: 1fr; } }
 .long-slider { position: relative; background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border); overflow: hidden; }
 .long-slider-viewport { width: 100%; max-height: 320px; overflow-y: auto; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
 .long-slider-viewport::-webkit-scrollbar { width: 4px; }
@@ -103,11 +104,14 @@ main::before { content: ''; position: fixed; top: var(--nav-height); bottom: 0; 
 .highlight-card .view-link { font-size: 13px; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
 .highlight-card .view-link:hover { border-bottom-color: var(--accent); }
 footer { padding: 60px 40px; text-align: center; border-top: 1px solid var(--border); }
-footer .email { font-size: 20px; color: var(--accent); text-decoration: none; font-weight: 600; }
-footer .social { margin-top: 16px; display: flex; justify-content: center; gap: 24px; }
-footer .social a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-footer .social a:hover { color: var(--accent); }
-footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
+.sub-nav { position: sticky; top: var(--nav-height); z-index: 90; background: rgba(248,249,251,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 10px 0; margin-bottom: 32px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.sub-nav::-webkit-scrollbar { display: none; }
+.sub-nav-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 40px; display: flex; gap: 20px; }
+.sub-nav a { text-decoration: none; font-size: 12px; color: var(--text-muted); white-space: nowrap; letter-spacing: 0.04em; transition: color 0.2s; flex-shrink: 0; }
+.sub-nav a:hover, .sub-nav a.active { color: var(--accent); }
+.sub-nav .sub-nav-num { font-weight: 600; }
+@media (max-width: 768px) { .sub-nav-inner { padding: 0 20px; gap: 14px; } }
+footer .copy { padding-top: 0; font-size: 12px; color: var(--text-muted); }
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .fade-in { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
@@ -125,6 +129,7 @@ footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
   nav .nav-links { gap: 16px; }
   .section-inner { padding: 0 20px; }
   .section { padding: 64px 0; }
+  .section-alt { background: #F2F4F7; }
 }
 @media (max-width: 480px) { .skills-grid { grid-template-columns: 1fr; } }
 </style>
@@ -145,7 +150,7 @@ footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
     <div class="hero-text fade-in">
       <h1 class="hero-name">王泽南</h1>
       <p class="hero-intro">你好!我是王泽南，本科就读于中山大学新闻传播学院，现在是北京大学汇丰商学院财经传媒方向的准研究生。曾实习于广东省广告集团、宝洁中国公关与传播部、南方财经全媒体集团。主要技能点在信息处理（收集、分析与可视化）、公关策划与创作各类文案。探索过视频制作（视频脚本、台词撰写）和一些设计美工类工作。虽然对未来想要从事何种工作仍较为焦虑，但无论在何岗位中，都希望自己能促进社会各群体间的良性沟通，缓和社会中的偏见与分歧。</p>
-      <p class="hero-intro" style="margin-top:12px;">沉迷电子游戏（王者荣耀及各类主机游戏）、电影（恐怖、科幻、悬疑、超英类）、羽毛球、吉他、文学写作。最近在琢磨AI和健身，喜欢和不同的人聊天。</p>
+      <p class="hero-intro hero-hobby">沉迷电子游戏（王者荣耀及各类主机游戏）、电影（恐怖、科幻、悬疑、超英类）、羽毛球、吉他、文学写作。最近在琢磨AI和健身，喜欢和不同的人聊天。</p>
       <div class="hero-meta">
         <div><a href="https://www.xiaohongshu.com/user/profile/62a2ddda000000001902c1a2" target="_blank" rel="noopener">小红书：小喜</a></div>
         <div><span style="color:var(--text-muted);">公众号：杠精养成记</span></div>
@@ -159,20 +164,30 @@ footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
     <h2 class="section-title">技能（更新中<span class="dots-loading"><span>.</span><span>.</span><span>.</span></span>）</h2>
     <div class="skill-group-label">信息处理</div>
     <div class="skills-grid">
-      <div class="skill-card fade-in"><div class="skill-icon"><svg viewBox="0 0 32 32" width="26" height="26"><path d="M15.9 2C11.2 2 11 4.2 11 5.5v2.6h5.1v.9H9.2c-2.9 0-5.4 1.7-6.2 5-.9 3.7-1 6 0 9.8.7 2.8 2.3 5 5.2 5H10v-4.1c0-3.2 2.8-6 6.1-6h4.2c2.6 0 4.7-2.2 4.7-4.9V5.5C25 3.4 23.1 2 20.1 2h-4.2z" fill="#387EB8"/><path d="M16.1 30c4.7 0 4.9-2.2 4.9-3.5v-2.6H15.9v-.9h6.9c2.9 0 4-2 5.2-5 .9-3.7 1.1-6 0-9.8-.7-2.8-2.1-5-5-5H22.1v4.1c0 3.2-2.8 6-6.1 6h-4.3c-2.6 0-4.7 2.2-4.7 4.9v3.3c0 2.1 1.8 5 4.8 5h4.3z" fill="#FFD845"/><circle cx="12.2" cy="6.8" r="1.2" fill="white"/><circle cx="19.8" cy="25.2" r="1.2" fill="white"/></svg></div><span class="skill-name">Python</span></div>
+      <div class="skill-card fade-in"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C9.5 2 9 3.5 9 4.5v2h3v.7H6.5c-2 0-3.7 1.2-4.3 3.5-.6 2.6-.7 4.2 0 6.8.5 1.9 1.6 3.5 3.6 3.5H8v-3c0-2.2 2-4 4.2-4H15c1.8 0 3.2-1.5 3.2-3.3V4.5C18.2 3 16.8 2 14.6 2H12z" stroke="currentColor" stroke-width="1.5"/><path d="M12 22c3.2 0 3.4-1.5 3.4-2.5v-2H12v-.7h4.7c2 0 2.8-1.4 3.6-3.5.6-2.6.7-4.2 0-6.8-.5-1.9-1.5-3.5-3.5-3.5H16v3c0 2.2-2 4-4.2 4H9c-1.8 0-3.2 1.5-3.2 3.3v2.5c0 1.5 1.3 3.5 3.4 3.5h3z" stroke="currentColor" stroke-width="1.5"/></svg></div><span class="skill-name">Python</span></div>
       <div class="skill-card fade-in"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 9h10M7 12h8M7 15h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="skill-name">SQL</span></div>
-      <div class="skill-card fade-in"><div class="skill-icon" style="font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--accent);">R</div><span class="skill-name">R 语言</span></div>
+      <div class="skill-card fade-in"><div class="skill-icon"><span class="icon-text">R</span></div><span class="skill-name">R 语言</span></div>
       <div class="skill-card fade-in"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="9" width="3" height="9" rx="1" fill="currentColor" opacity=".7"/><rect x="11" y="5" width="3" height="13" rx="1" fill="currentColor" opacity=".5"/><rect x="16" y="7" width="3" height="11" rx="1" fill="currentColor" opacity=".3"/></svg></div><span class="skill-name">SPSS</span></div>
     </div>
     <div class="skill-group-label" style="margin-top:28px;">图片设计与编辑</div>
     <div class="skills-grid">
-      <div class="skill-card fade-in"><div class="skill-icon" style="font-weight:700;color:var(--accent);font-size:22px;">Ps</div><span class="skill-name">Photoshop</span></div>
-      <div class="skill-card fade-in"><div class="skill-icon" style="overflow:hidden;border-radius:4px;"><svg viewBox="0 0 32 32" width="26" height="26"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00C4CC"/><stop offset="100%" stop-color="#7D2BE8"/></linearGradient></defs><rect x="4" y="4" width="24" height="24" rx="6" fill="url(#cg)"/><text x="16" y="22.5" text-anchor="middle" fill="white" font-size="16" font-weight="700" font-family="sans-serif">C</text></svg></div><span class="skill-name">可画</span></div>
+      <div class="skill-card fade-in"><div class="skill-icon"><span class="icon-text">Ps</span></div><span class="skill-name">Photoshop</span></div>
+      <div class="skill-card fade-in"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><text x="12" y="17" text-anchor="middle" fill="currentColor" font-size="14" font-weight="700" font-family="sans-serif">C</text></svg></div><span class="skill-name">可画</span></div>
     </div>
   </div>
 </section>
 <section id="works" class="section"><div class="section-inner"><h2 class="section-title">作品</h2></div></section>
-<section id="journalism" class="section" style="padding-top:0;">
+<nav class="sub-nav" id="subNav">
+  <div class="sub-nav-inner">
+    <a href="#journalism"><span class="sub-nav-num">1.</span> 新闻稿件与社论</a>
+    <a href="#pr"><span class="sub-nav-num">2.</span> 公关营销策划</a>
+    <a href="#data-journo"><span class="sub-nav-num">3.</span> 数据新闻</a>
+    <a href="#writing"><span class="sub-nav-num">4.</span> 文学创作</a>
+    <a href="#design"><span class="sub-nav-num">5.</span> 美工与设计</a>
+    <a href="#video"><span class="sub-nav-num">6.</span> 视频作品</a>
+  </div>
+</nav>
+<section id="journalism" class="section section-alt" style="padding-top:0;">
   <div class="section-inner">
     <h3 class="h1-title">1.新闻稿件与社论</h3>
     <h4 class="h2-title">1.1财经新闻</h4>
@@ -222,70 +237,49 @@ footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
       <div class="flow-step"><span class="flow-num">6</span><span class="flow-text">实时监控传播效果与转化率</span></div>
       <div class="flow-step"><span class="flow-num">7</span><span class="flow-text">进行活动复盘与总结</span></div>
     </div>
-    <div class="card-slider-row fade-in">
-      <div class="file-card">
-        <a href="Oral-B小红书种草策划案.pptx" target="_blank">
-          <div class="file-thumb"><img src="assets/thumbs/thumb_oralb_cover.jpg" alt="Oral-B小红书种草策划案" loading="lazy"></div>
-          <div class="file-info"><div class="file-name">宝洁欧乐B · 小红书种草策划案</div><div class="file-type">PPTX 演示文稿 · 共38页</div></div>
-        </a>
-      </div>
-      <div class="long-slider">
+    <div class="long-slider fade-in" style="max-width:680px; margin-top:20px;">
         <div class="long-slider-viewport">
-          <img src="assets/thumbs/thumb_oralb_long_1.jpg" alt="Oral-B小红书种草策划案 第1部分">
-          <img src="assets/thumbs/thumb_oralb_long_2.jpg" alt="Oral-B小红书种草策划案 第2部分">
-          <img src="assets/thumbs/thumb_oralb_long_3.jpg" alt="Oral-B小红书种草策划案 第3部分">
+          <img src="assets/thumbs/thumb_oralb_long_1.jpg" alt="欧乐B小红书种草策划案 第1部分：市场调研与用户画像" loading="lazy">
+          <img src="assets/thumbs/thumb_oralb_long_2.jpg" alt="欧乐B小红书种草策划案 第2部分：KOL策略与内容规划" loading="lazy">
+          <img src="assets/thumbs/thumb_oralb_long_3.jpg" alt="欧乐B小红书种草策划案 第3部分：传播效果与复盘总结" loading="lazy">
         </div>
       </div>
-    </div>
     <h4 class="h2-title">2.2中国移动系列产品营销策划案</h4>
     <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">2025.3 – 2025.6 · 广东省广告集团实习 · 为中国移动系列产品策划营销活动</p>
-    <div class="card-slider-row fade-in">
-      <div class="file-card">
-        <a href="移动安全管家产品暨公益行动发布活动策划方案.pdf" target="_blank">
-          <div class="file-thumb"><img src="assets/thumbs/thumb_ydaqgj_cover.jpg" alt="移动安全管家" loading="lazy"></div>
-          <div class="file-info"><div class="file-name">移动安全管家产品暨公益行动发布活动策划方案</div><div class="file-type">PDF 文档</div></div>
-        </a>
-      </div>
-      <div class="long-slider">
+    <div class="long-slider fade-in" style="max-width:680px;">
         <div class="long-slider-viewport">
-          <img src="assets/thumbs/thumb_ydaqgj_long.jpg" alt="移动安全管家策划方案">
+          <img src="assets/thumbs/thumb_ydaqgj_long.jpg" alt="移动安全管家产品暨公益行动发布活动策划方案" loading="lazy">
         </div>
       </div>
     </div>
     <h4 class="h2-title">中国力量来了！冠军李发彬亲临直播间</h4>
     <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">广东省广告集团实习期间 · 活动执行策划方案</p>
-    <div class="card-slider-row fade-in">
-      <div class="file-card">
-        <a href="《中国力量来了！冠军李发彬亲临直播间》 ——活动执行策划方案v2.pptx" target="_blank">
-          <div class="file-thumb"><img src="assets/thumbs/thumb_zgll_cover.jpg" alt="中国力量来了" loading="lazy"></div>
-          <div class="file-info"><div class="file-name">中国力量来了！冠军李发彬亲临直播间</div><div class="file-type">PPTX 演示文稿</div></div>
-        </a>
-      </div>
-      <div class="long-slider">
+    <div class="long-slider fade-in" style="max-width:680px;">
         <div class="long-slider-viewport">
-          <img src="assets/thumbs/thumb_zgll_long_1.jpg" alt="中国力量来了 第1部分">
-          <img src="assets/thumbs/thumb_zgll_long_2.jpg" alt="中国力量来了 第2部分">
+          <img src="assets/thumbs/thumb_zgll_long_1.jpg" alt="中国力量来了策划案 第1部分：活动流程与执行方案" loading="lazy">
+          <img src="assets/thumbs/thumb_zgll_long_2.jpg" alt="中国力量来了策划案 第2部分：传播策略与资源规划" loading="lazy">
         </div>
       </div>
     </div>
     <h4 class="h2-title">2.3全国公共关系策划大赛、大学生广告大赛作品</h4>
-    <div class="hscroll-container fade-in" style="margin-top:20px;">
-      <div class="file-card" style="flex:0 0 280px;">
-        <a href="大广赛作品.pptx" target="_blank">
-          <div class="file-thumb"><img src="assets/thumbs/thumb_daguangsai_cover.jpg" alt="大广赛作品" loading="lazy"></div>
-          <div class="file-info"><div class="file-name">大广赛作品</div><div class="file-type">PPTX 演示文稿</div></div>
-        </a>
+    <h4 class="h2-title" style="font-size:15px; margin-top:0; margin-bottom:12px;">大广赛作品</h4>
+    <div class="long-slider fade-in" style="max-width:680px;">
+      <div class="long-slider-viewport">
+        <img src="assets/thumbs/thumb_daguangsai_long_1.jpg" alt="大广赛作品 第1页" loading="lazy">
+        <img src="assets/thumbs/thumb_daguangsai_long_2.jpg" alt="大广赛作品 第2页" loading="lazy">
+        <img src="assets/thumbs/thumb_daguangsai_long_3.jpg" alt="大广赛作品 第3页" loading="lazy">
       </div>
-      <div class="file-card" style="flex:0 0 280px;">
-        <a href="公关大赛作品2.pptx" target="_blank">
-          <div class="file-thumb"><img src="assets/thumbs/thumb_gongguan2_cover.jpg" alt="公关大赛作品2" loading="lazy"></div>
-          <div class="file-info"><div class="file-name">公关大赛作品</div><div class="file-type">PPTX 演示文稿</div></div>
-        </a>
+    </div>
+    <h4 class="h2-title" style="font-size:15px; margin-top:28px; margin-bottom:12px;">公关大赛作品</h4>
+    <div class="long-slider fade-in" style="max-width:680px;">
+      <div class="long-slider-viewport">
+        <img src="assets/thumbs/thumb_gongguan2_long_1.jpg" alt="公关大赛作品 第1页" loading="lazy">
+        <img src="assets/thumbs/thumb_gongguan2_long_2.jpg" alt="公关大赛作品 第2页" loading="lazy">
       </div>
     </div>
   </div>
 </section>
-<section id="data-journo" class="section" style="padding-top:0;">
+<section id="data-journo" class="section section-alt" style="padding-top:0;">
   <div class="section-inner">
     <h3 class="h1-title">3.数据新闻作品《成为父母，将是史上最艰难的决定吗——数说回避生育的三大因素》</h3>
     <div class="highlight-card fade-in">
@@ -304,33 +298,33 @@ footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
       <div class="badge">《散文选刊》2025年第2期 · 校园作家板块</div>
       <h3>散文《泽》</h3>
       <p>刊登于河南省文联主办的《散文选刊》2025年第2期总第539期。</p>
-      <a href="泽.png" target="_blank">
+      <a href="#" style="pointer-events:none;opacity:0.6" title="文件未上传至GitHub" target="_blank">
         <div class="long-slider" style="margin-top:16px; cursor:pointer;">
           <div class="long-slider-viewport" style="max-height:480px;">
-            <img src="assets/thumbs/thumb_ze.jpg" alt="散文《泽》">
+            <img src="assets/thumbs/thumb_ze.jpg" alt="散文《泽》全文">
           </div>
         </div>
       </a>
     </div>
   </div>
 </section>
-<section id="design" class="section" style="padding-top:0;">
+<section id="design" class="section section-alt" style="padding-top:0;">
   <div class="section-inner">
     <h3 class="h1-title">5.美工与设计作品</h3>
     <h4 class="h2-title">5.1中国移动产品宣传海报</h4>
     <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">广东省广告集团实习期间</p>
     <div class="long-slider" style="max-width:680px;">
       <div class="long-slider-viewport">
-        <img src="assets/thumbs/thumb_yidongyunpan_long.jpg" alt="移动云盘展厅">
+        <img src="assets/thumbs/thumb_yidongyunpan_long.jpg" alt="移动云盘展厅修改版 活动宣传海报设计" loading="lazy">
       </div>
     </div>
     <h4 class="h2-title">5.2「C刊面对面」学术论坛物料</h4>
     <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">为广东省社会科学联合会举办的学术交流活动设计物料</p>
     <div class="gallery fade-in">
-      <div class="gallery-item"><img src="assets/thumbs/thumb_shekeyuan.jpg" alt="广东省社会科学院大楼设计" loading="lazy"></div>
-      <div class="gallery-item"><img src="assets/thumbs/thumb_mumianhua.jpg" alt="木棉花 最终版" loading="lazy"></div>
-      <div class="gallery-item"><img src="assets/thumbs/thumb_wushi.jpg" alt="舞狮 最终版" loading="lazy"></div>
-      <div class="gallery-item"><img src="assets/thumbs/thumb_wushi_shiwu.jpg" alt="舞狮实物" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/thumbs/thumb_shekeyuan.jpg" alt="广东省社会科学院大楼背景板设计" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/thumbs/thumb_mumianhua.jpg" alt="木棉花主题学术论坛海报" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/thumbs/thumb_wushi.jpg" alt="舞狮文化展示海报" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/thumbs/thumb_wushi_shiwu.jpg" alt="舞狮海报实物展示" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -339,24 +333,24 @@ footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
     <h3 class="h1-title">6.视频作品</h3>
     <h4 class="h2-title">6.1乡村振兴视频作品</h4>
     <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">2024.7 – 2024.8 · 广东省梅州市丰顺县融媒体中心实习 · 为乡村振兴代表人物拍摄视频报道</p>
-    <div class="video-wrapper fade-in">
-      <video controls preload="metadata" style="width:100%;" poster="assets/thumbs/thumb_video_cover.jpg">
-        <source src="游子返乡记.mp4" type="video/mp4">
-        您的浏览器不支持视频播放，请 <a href="游子返乡记.mp4">下载观看</a>
-      </video>
+    <div class="file-card fade-in" style="max-width:400px;">
+      <a href="https://www.bilibili.com/video/BV1hpuH6ME4S/" target="_blank" rel="noopener">
+        <div class="file-thumb"><img src="assets/thumbs/thumb_video_cover.jpg" alt="游子返乡记 乡村振兴视频" loading="lazy"></div>
+        <div class="file-info"><div class="file-name">游子返乡记</div><div class="file-type">B站链接</div></div>
+      </a>
     </div>
     <h4 class="h2-title">6.2创意视频制作</h4>
     <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">通过流行的猫meme形式表达深刻社会议题，累计发布6期视频，播放量 1.7w+</p>
     <div class="file-grid fade-in">
       <div class="file-card">
         <a href="https://www.bilibili.com/video/BV11N6KYNE83/?spm_id_from=333.1387.homepage.video_card.click" target="_blank" rel="noopener">
-          <div class="file-thumb"><img src="assets/thumbs/thumb_bili1_cover.jpg" alt="B站视频 1" loading="lazy"></div>
+          <div class="file-thumb"><img src="assets/thumbs/thumb_bili1_cover.jpg" alt="猫meme创意视频 ①" loading="lazy"></div>
           <div class="file-info"><div class="file-name">猫meme创意视频 ①</div><div class="file-type">B站链接</div></div>
         </a>
       </div>
       <div class="file-card">
         <a href="https://www.bilibili.com/video/BV199iUYoEaz/?spm_id_from=333.1387.homepage.video_card.click" target="_blank" rel="noopener">
-          <div class="file-thumb"><img src="assets/thumbs/thumb_bili2_cover.jpg" alt="B站视频 2" loading="lazy"></div>
+          <div class="file-thumb"><img src="assets/thumbs/thumb_bili2_cover.jpg" alt="猫meme创意视频 ②" loading="lazy"></div>
           <div class="file-info"><div class="file-name">猫meme创意视频 ②</div><div class="file-type">B站链接</div></div>
         </a>
       </div>
@@ -365,9 +359,10 @@ footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
     <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">为中山大学交叉探索平台拍摄宣传视频，发布于中山大学官方微信视频号</p>
     <div class="file-card fade-in" style="max-width:400px;">
       <a href="https://weixin.qq.com/sph/AHKKxYXEFT" target="_blank" rel="noopener">
-        <div class="file-thumb"><img src="assets/thumbs/thumb_jiaochatansuo_cover.jpg" alt="交叉探索平台" loading="lazy"></div>
+        <div class="file-thumb"><img src="assets/thumbs/thumb_jiaochatansuo_cover.jpg" alt="中山大学交叉探索平台宣传视频" loading="lazy"></div>
         <div class="file-info"><div class="file-name">中山大学交叉探索平台宣传视频</div><div class="file-type">微信视频号</div></div>
       </a>
+    </div>
   </div>
 </section>
 <footer id="contact">
@@ -385,6 +380,28 @@ footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  /* ── 二级导航 active 切换 ── */
+  var subNav = document.getElementById('subNav');
+  if (subNav) {
+    var links = subNav.querySelectorAll('a');
+    var sectionIds = [];
+    links.forEach(function(a) { sectionIds.push(a.getAttribute('href').slice(1)); });
+    var subObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function(a) { a.classList.remove('active'); });
+          var id = entry.target.id;
+          var idx = sectionIds.indexOf(id);
+          if (idx >= 0) links[idx].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-70px 0px -60% 0px', threshold: 0 });
+    sectionIds.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) subObserver.observe(el);
+    });
+  }
 })();
 </script>
 </body>
