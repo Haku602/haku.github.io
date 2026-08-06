@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王泽南 · 作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg: #F8F9FB; --bg-card: #F0F2F5; --text: #1B1F27; --text-muted: #566273; --accent: #4A6580; --accent-hover: #3A5268; --border: #E2E6EC; --nav-height: 56px; --content-width: 920px; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; font-size: 15px; -webkit-font-smoothing: antialiased; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-height); background: rgba(248,249,251,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; padding: 0 40px; }
+nav .logo { font-family: "Noto Serif SC", serif; font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: 0.04em; position: absolute; left: 40px; }
+nav .nav-links { display: flex; gap: 28px; list-style: none; }
+nav .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 13px; letter-spacing: 0.02em; transition: color 0.2s; }
+nav .nav-links a:hover { color: var(--accent); }
+main { margin-top: var(--nav-height); }
+.section { padding: 100px 0; position: relative; }
+.section-inner { max-width: var(--content-width); margin: 0 auto; padding: 0 40px; position: relative; }
+main::before { content: ''; position: fixed; top: var(--nav-height); bottom: 0; left: calc((100vw - var(--content-width)) / 2 + 40px - 24px); width: 1px; background: var(--border); z-index: 0; pointer-events: none; }
+.section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 8px; }
+.section-title { font-family: "Noto Serif SC", serif; font-size: 28px; font-weight: 700; line-height: 1.3; color: var(--text); margin-bottom: 48px; letter-spacing: 0.02em; }
+.h1-title { font-family: "Noto Serif SC", serif; font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 28px; line-height: 1.4; }
+.h2-title { font-family: "Noto Serif SC", serif; font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 20px; margin-top: 32px; }
+#hero { padding: 120px 0 60px; }
+#hero .section-inner { display: flex; align-items: center; gap: 64px; }
+.hero-photo { flex-shrink: 0; width: 240px; height: 240px; border-radius: 50%; overflow: hidden; border: 1px solid var(--border); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-text { flex: 1; }
+.hero-name { font-family: "Noto Serif SC", serif; font-size: 44px; font-weight: 700; line-height: 1.2; letter-spacing: 0.04em; margin-bottom: 16px; }
+.hero-intro { color: var(--text-muted); font-size: 15px; max-width: 460px; line-height: 1.8; }
+.hero-meta { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+.hero-meta a { font-size: 13px; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.hero-meta a:hover { border-bottom-color: var(--accent); }
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.skill-card { background: var(--bg-card); border-radius: 6px; padding: 28px 24px; display: flex; align-items: center; gap: 16px; border: 1px solid transparent; transition: border-color 0.2s; }
+.skill-card:hover { border-color: var(--border); }
+.skill-icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.skill-icon svg { width: 24px; height: 24px; stroke: var(--accent); }
+.skill-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.skill-group-label { font-family: "Noto Serif SC", serif; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.06em; }
+.dots-loading { display: inline; }
+.dots-loading span { display: inline-block; animation: dotBounce 1.2s infinite; }
+.dots-loading span:nth-child(1) { animation-delay: 0s; }
+.dots-loading span:nth-child(2) { animation-delay: 0.2s; }
+.dots-loading span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dotBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+.article-list { list-style: none; }
+.article-list li { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.article-list li:first-child { border-top: 1px solid var(--border); }
+.article-list a { text-decoration: none; color: var(--text); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; transition: color 0.2s; }
+.article-list a:hover { color: var(--accent); }
+.article-list .title { font-size: 14px; flex: 1; }
+.article-list .arrow { flex-shrink: 0; color: var(--text-muted); font-size: 13px; transition: color 0.2s, transform 0.2s; }
+.article-list a:hover .arrow { color: var(--accent); transform: translateX(4px); }
+.sub-heading { font-family: "Noto Serif SC", serif; font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 24px; margin-top: 48px; }
+.sub-heading:first-child { margin-top: 0; }
+.process-flow { display: flex; flex-direction: column; gap: 0; padding: 8px 0 16px; }
+.flow-step { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.flow-num { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; }
+.flow-text { font-size: 14px; color: var(--text); line-height: 1.6; }
+.card-slider-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.card-slider-row .file-card { margin: 0; }
+@media (max-width: 768px) { .card-slider-row { grid-template-columns: 1fr; } }
+.long-slider { position: relative; background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border); overflow: hidden; }
+.long-slider-viewport { width: 100%; max-height: 320px; overflow-y: auto; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.long-slider-viewport::-webkit-scrollbar { width: 4px; }
+.long-slider-viewport::-webkit-scrollbar-track { background: transparent; }
+.long-slider-viewport::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.long-slider-viewport img { width: 100%; display: block; scroll-snap-align: start; }
+.hscroll-container { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; display: flex; gap: 16px; padding-bottom: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.hscroll-container::-webkit-scrollbar { height: 4px; }
+.hscroll-container::-webkit-scrollbar-track { background: transparent; }
+.hscroll-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.hscroll-card { flex: 0 0 260px; scroll-snap-align: start; background: var(--bg-card); border-radius: 6px; padding: 20px; border: 1px solid var(--border); min-height: 200px; display: flex; flex-direction: column; }
+.hscroll-card .step-num { font-size: 11px; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 8px; }
+.hscroll-card .step-title { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.6; }
+.file-card { background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border); overflow: hidden; transition: border-color 0.2s; }
+.file-card:hover { border-color: var(--accent); }
+.file-card a { text-decoration: none; color: inherit; }
+.file-thumb { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #e8eaef; }
+.file-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.file-info { padding: 14px 16px; }
+.file-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.file-type { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.file-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.gallery-item { border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-card); }
+.gallery-item img { width: 100%; height: auto; display: block; }
+.gallery-item .caption { padding: 12px 16px; font-size: 13px; color: var(--text-muted); }
+.video-wrapper { border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: #000; }
+.video-wrapper video { width: 100%; display: block; }
+.highlight-card { background: var(--bg-card); border-radius: 6px; border: 1px solid var(--border); padding: 32px; }
+.highlight-card h3 { font-family: "Noto Serif SC", serif; font-size: 18px; font-weight: 600; margin-bottom: 12px; line-height: 1.5; }
+.highlight-card p { color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 16px; }
+.highlight-card .badge { display: inline-block; font-size: 12px; color: var(--accent); border: 1px solid var(--accent); border-radius: 20px; padding: 4px 14px; margin-bottom: 16px; }
+.highlight-card .view-link { font-size: 13px; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.highlight-card .view-link:hover { border-bottom-color: var(--accent); }
+footer { padding: 60px 40px; text-align: center; border-top: 1px solid var(--border); }
+footer .email { font-size: 20px; color: var(--accent); text-decoration: none; font-weight: 600; }
+footer .social { margin-top: 16px; display: flex; justify-content: center; gap: 24px; }
+footer .social a { font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+footer .social a:hover { color: var(--accent); }
+footer .copy { margin-top: 32px; font-size: 12px; color: var(--text-muted); }
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .fade-in { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+@media (max-width: 768px) {
+  main::before { display: none; }
+  #hero .section-inner { flex-direction: column; text-align: center; gap: 32px; }
+  .hero-name { font-size: 32px; }
+  .hero-intro { max-width: 100%; }
+  .hero-meta { justify-content: center; }
+  .hero-photo { width: 180px; height: 180px; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .file-grid { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr; }
+  nav { padding: 0 20px; }
+  nav .nav-links { gap: 16px; }
+  .section-inner { padding: 0 20px; }
+  .section { padding: 64px 0; }
+}
+@media (max-width: 480px) { .skills-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="#hero" class="logo">王泽南</a>
+  <ul class="nav-links">
+    <li><a href="#hero">关于我</a></li>
+    <li><a href="#skills">技能</a></li>
+    <li><a href="#works">作品</a></li>
+  </ul>
+</nav>
+<main>
+<section id="hero" class="section">
+  <div class="section-inner">
+    <div class="hero-photo fade-in"><img src="assets/thumbs/photo_web.jpg" alt="王泽南"></div>
+    <div class="hero-text fade-in">
+      <h1 class="hero-name">王泽南</h1>
+      <p class="hero-intro">你好!我是王泽南，本科就读于中山大学新闻传播学院，现在是北京大学汇丰商学院财经传媒方向的准研究生。曾实习于广东省广告集团、宝洁中国公关与传播部、南方财经全媒体集团。主要技能点在信息处理（收集、分析与可视化）、公关策划与创作各类文案。探索过视频制作（视频脚本、台词撰写）和一些设计美工类工作。虽然对未来想要从事何种工作仍较为焦虑，但无论在何岗位中，都希望自己能促进社会各群体间的良性沟通，缓和社会中的偏见与分歧。</p>
+      <p class="hero-intro" style="margin-top:12px;">沉迷电子游戏（王者荣耀及各类主机游戏）、电影（恐怖、科幻、悬疑、超英类）、羽毛球、吉他、文学写作。最近在琢磨AI和健身，喜欢和不同的人聊天。</p>
+      <div class="hero-meta">
+        <div><a href="https://www.xiaohongshu.com/user/profile/62a2ddda000000001902c1a2" target="_blank" rel="noopener">小红书：小喜</a></div>
+        <div><span style="color:var(--text-muted);">公众号：杠精养成记</span></div>
+        <div><span style="color:var(--text-muted);">联系方式：</span><a href="mailto:355986213@qq.com">355986213@qq.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="skills" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">技能（更新中<span class="dots-loading"><span>.</span><span>.</span><span>.</span></span>）</h2>
+    <div class="skill-group-label">信息处理</div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><div class="skill-icon"><svg viewBox="0 0 32 32" width="26" height="26"><path d="M15.9 2C11.2 2 11 4.2 11 5.5v2.6h5.1v.9H9.2c-2.9 0-5.4 1.7-6.2 5-.9 3.7-1 6 0 9.8.7 2.8 2.3 5 5.2 5H10v-4.1c0-3.2 2.8-6 6.1-6h4.2c2.6 0 4.7-2.2 4.7-4.9V5.5C25 3.4 23.1 2 20.1 2h-4.2z" fill="#387EB8"/><path d="M16.1 30c4.7 0 4.9-2.2 4.9-3.5v-2.6H15.9v-.9h6.9c2.9 0 4-2 5.2-5 .9-3.7 1.1-6 0-9.8-.7-2.8-2.1-5-5-5H22.1v4.1c0 3.2-2.8 6-6.1 6h-4.3c-2.6 0-4.7 2.2-4.7 4.9v3.3c0 2.1 1.8 5 4.8 5h4.3z" fill="#FFD845"/><circle cx="12.2" cy="6.8" r="1.2" fill="white"/><circle cx="19.8" cy="25.2" r="1.2" fill="white"/></svg></div><span class="skill-name">Python</span></div>
+      <div class="skill-card fade-in"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 9h10M7 12h8M7 15h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="skill-name">SQL</span></div>
+      <div class="skill-card fade-in"><div class="skill-icon" style="font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--accent);">R</div><span class="skill-name">R 语言</span></div>
+      <div class="skill-card fade-in"><div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="9" width="3" height="9" rx="1" fill="currentColor" opacity=".7"/><rect x="11" y="5" width="3" height="13" rx="1" fill="currentColor" opacity=".5"/><rect x="16" y="7" width="3" height="11" rx="1" fill="currentColor" opacity=".3"/></svg></div><span class="skill-name">SPSS</span></div>
+    </div>
+    <div class="skill-group-label" style="margin-top:28px;">图片设计与编辑</div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><div class="skill-icon" style="font-weight:700;color:var(--accent);font-size:22px;">Ps</div><span class="skill-name">Photoshop</span></div>
+      <div class="skill-card fade-in"><div class="skill-icon" style="overflow:hidden;border-radius:4px;"><svg viewBox="0 0 32 32" width="26" height="26"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00C4CC"/><stop offset="100%" stop-color="#7D2BE8"/></linearGradient></defs><rect x="4" y="4" width="24" height="24" rx="6" fill="url(#cg)"/><text x="16" y="22.5" text-anchor="middle" fill="white" font-size="16" font-weight="700" font-family="sans-serif">C</text></svg></div><span class="skill-name">可画</span></div>
+    </div>
+  </div>
+</section>
+<section id="works" class="section"><div class="section-inner"><h2 class="section-title">作品</h2></div></section>
+<section id="journalism" class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <h3 class="h1-title">1.新闻稿件与社论</h3>
+    <h4 class="h2-title">1.1财经新闻</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">2025.11 – 2026.3 · 南方财经全媒体集团 实习记者 · 协助记者完成采访并撰写 20 余篇财经报道</p>
+    <ul class="article-list fade-in">
+<li><a href="https://m.21jingji.com/article/20260513/herald/88a29566dd7d3a6fdc95cd64a9e0d308.html" target="_blank" rel="noopener"><span class="title">专访广东港航集团张道武：向天图强向海而兴，五年再造"新港航"</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260408/herald/95edf32ffd34a002f79781cfed126d80.html" target="_blank" rel="noopener"><span class="title">广东国企冲刺"十五五"开门红，新一轮国企改革路径浮现</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260317/herald/b7877f95756585e502466fae92860ac1.html" target="_blank" rel="noopener"><span class="title">国泰"加减法"：长空万里的远航之道——对话国泰集团行政总裁林绍波</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260303/herald/524bc711d9c1334b094eaa33ca010f8f.html" target="_blank" rel="noopener"><span class="title">探秘广东省具身智能训练场：在"机器人学校"里，它们要学什么？</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260125/herald/6da8c4a5ba01c11beb6af3f1ff70d00c.html" target="_blank" rel="noopener"><span class="title">广东省政协委员陈凯：新质生产力出海，比拼标准对接等系统能力</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260121/herald/6d7cbb81f377a84c83324ec3cd1946bd.html" target="_blank" rel="noopener"><span class="title">AI"链"动广东造：从粤家电到机器人，广东万亿集群加速跑</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260120/herald/1cd61756c823a71b57576391f3533840.html" target="_blank" rel="noopener"><span class="title">广东2026年将重点建设琶洲、南山、滨海湾三大人工智能核心产业集聚区</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260120/herald/189e396272642225ddcbd9edaa3da62b.html" target="_blank" rel="noopener"><span class="title">广东人工智能、机器人、超高清视频等产业稳居全国第一方阵</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260120/herald/f307c8208b8e28e6dd37fea22ff3ef88.html" target="_blank" rel="noopener"><span class="title">广东2025年投资1亿元以上制造业项目达4871个</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260120/herald/dcfde7d52a6a2cbdbd6b6799ffeae82c.html" target="_blank" rel="noopener"><span class="title">广东数字产业规模居全国首位，新认定132家省级先进级智能工厂</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260119/herald/04ccccbdef1d00983028a40a726c8bc2.html" target="_blank" rel="noopener"><span class="title">优必选Walker S2 打工记：广东机器人迎 ChatGPT 时刻</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260113/herald/d29db8ca1a9ff2f0f88ae9a622969e11.html" target="_blank" rel="noopener"><span class="title">爆款"广东造"："AI 时代的新广货"全球进击</span><span class="arrow">→</span></a></li>
+<li><a href="https://www.21jingji.com/article/20251231/herald/5791839453c9e13932bcebf883c45e14.html" target="_blank" rel="noopener"><span class="title">货运及年终旅游高峰需求稳健，国泰集团2025全年业绩将超去年</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20251226/herald/8d529566ede8fefea0cffbc243abec17.html" target="_blank" rel="noopener"><span class="title">广州工控43亿入主旭升集团，补上新能源汽车产业链关键拼图</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20251225/herald/0be203f6a05d16562e6cf182472e0f66.html" target="_blank" rel="noopener"><span class="title">珠江文化保护与发展主题闭门研讨会在广州举行</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20251213/herald/6ae8ed148712acc0ab271f9b956f0c25.html" target="_blank" rel="noopener"><span class="title">专访张崟：解码"软硬融合"的广东 AI 与机器人产业路径</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20251212/herald/abeb77455f83171cf58b8c9e49590089.html" target="_blank" rel="noopener"><span class="title">为飞驰人生创造更多可能：全国首家"现代骑手学院"诞生记</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20251209/herald/72491357a69368861e6c0d3f55ad73b4.html" target="_blank" rel="noopener"><span class="title">寻找创新样本，金融支持广州南沙创新案例正式启动征集</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20251205/herald/45305c4948c5f7937599397becce345b.html" target="_blank" rel="noopener"><span class="title">决胜国有企业改革深化提升行动：广东国资国企交出亮眼答卷</span><span class="arrow">→</span></a></li>
+<li><a href="https://m.21jingji.com/article/20260129/herald/2da51840a67c0bb909e3597d55070001.html" target="_blank" rel="noopener"><span class="title">绿色信贷同比增长超20%！2025年绿色金融十大关键词出炉</span><span class="arrow">→</span></a></li>
+    </ul>
+    <h4 class="h2-title">1.2社会评论</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">个人公众号「杠精养成记」· 社会热点议题梳理与分析</p>
+    <ul class="article-list fade-in">
+      <li><a href="https://mp.weixin.qq.com/s/53eOU0bdCvGOSAkPd1-etQ" target="_blank" rel="noopener"><span class="title">性同意年龄提高到18岁会发生什么？</span><span class="arrow">→</span></a></li>
+      <li><a href="https://mp.weixin.qq.com/s/BYko1bOKp6E6wdqcZxDyEQ" target="_blank" rel="noopener"><span class="title">我为什么不信中医？</span><span class="arrow">→</span></a></li>
+      <li><a href="https://mp.weixin.qq.com/s/3nsTyhCS30PBDxWvZwtMwg" target="_blank" rel="noopener"><span class="title">姜萍事件，谁是赢家？</span><span class="arrow">→</span></a></li>
+    </ul>
+  </div>
+</section>
+<section id="pr" class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <h3 class="h1-title">2.公关、营销策划案设计</h3>
+    <h4 class="h2-title">2.1宝洁欧乐B品牌小红书种草营销策划案</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">2025.3 – 2025.6 · 中国宝洁公关与传播部高校互培项目 · 协助欧乐B电动牙刷品牌完成小红书全链路营销</p>
+    <div class="process-flow fade-in">
+      <div class="flow-step"><span class="flow-num">1</span><span class="flow-text">阅读研报了解市场格局，确定竞品名单</span></div>
+      <div class="flow-step"><span class="flow-num">2</span><span class="flow-text">对小红书中有关欧乐B及其竞品的内容进行内容分析，同时发放问卷进一步细分消费者群体</span></div>
+      <div class="flow-step"><span class="flow-num">3</span><span class="flow-text">整理、汇总各细分人群用户画像</span></div>
+      <div class="flow-step"><span class="flow-num">4</span><span class="flow-text">根据用户画像确定合作KOL</span></div>
+      <div class="flow-step"><span class="flow-num">5</span><span class="flow-text">制定营销活动周期，进行内容协作</span></div>
+      <div class="flow-step"><span class="flow-num">6</span><span class="flow-text">实时监控传播效果与转化率</span></div>
+      <div class="flow-step"><span class="flow-num">7</span><span class="flow-text">进行活动复盘与总结</span></div>
+    </div>
+    <div class="card-slider-row fade-in">
+      <div class="file-card">
+        <a href="Oral-B小红书种草策划案.pptx" target="_blank">
+          <div class="file-thumb"><img src="assets/thumbs/thumb_oralb_cover.jpg" alt="Oral-B小红书种草策划案" loading="lazy"></div>
+          <div class="file-info"><div class="file-name">宝洁欧乐B · 小红书种草策划案</div><div class="file-type">PPTX 演示文稿 · 共38页</div></div>
+        </a>
+      </div>
+      <div class="long-slider">
+        <div class="long-slider-viewport">
+          <img src="assets/thumbs/thumb_oralb_long_1.jpg" alt="Oral-B小红书种草策划案 第1部分">
+          <img src="assets/thumbs/thumb_oralb_long_2.jpg" alt="Oral-B小红书种草策划案 第2部分">
+          <img src="assets/thumbs/thumb_oralb_long_3.jpg" alt="Oral-B小红书种草策划案 第3部分">
+        </div>
+      </div>
+    </div>
+    <h4 class="h2-title">2.2中国移动系列产品营销策划案</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">2025.3 – 2025.6 · 广东省广告集团实习 · 为中国移动系列产品策划营销活动</p>
+    <div class="card-slider-row fade-in">
+      <div class="file-card">
+        <a href="移动安全管家产品暨公益行动发布活动策划方案.pdf" target="_blank">
+          <div class="file-thumb"><img src="assets/thumbs/thumb_ydaqgj_cover.jpg" alt="移动安全管家" loading="lazy"></div>
+          <div class="file-info"><div class="file-name">移动安全管家产品暨公益行动发布活动策划方案</div><div class="file-type">PDF 文档</div></div>
+        </a>
+      </div>
+      <div class="long-slider">
+        <div class="long-slider-viewport">
+          <img src="assets/thumbs/thumb_ydaqgj_long.jpg" alt="移动安全管家策划方案">
+        </div>
+      </div>
+    </div>
+    <h4 class="h2-title">中国力量来了！冠军李发彬亲临直播间</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">广东省广告集团实习期间 · 活动执行策划方案</p>
+    <div class="card-slider-row fade-in">
+      <div class="file-card">
+        <a href="《中国力量来了！冠军李发彬亲临直播间》 ——活动执行策划方案v2.pptx" target="_blank">
+          <div class="file-thumb"><img src="assets/thumbs/thumb_zgll_cover.jpg" alt="中国力量来了" loading="lazy"></div>
+          <div class="file-info"><div class="file-name">中国力量来了！冠军李发彬亲临直播间</div><div class="file-type">PPTX 演示文稿</div></div>
+        </a>
+      </div>
+      <div class="long-slider">
+        <div class="long-slider-viewport">
+          <img src="assets/thumbs/thumb_zgll_long_1.jpg" alt="中国力量来了 第1部分">
+          <img src="assets/thumbs/thumb_zgll_long_2.jpg" alt="中国力量来了 第2部分">
+        </div>
+      </div>
+    </div>
+    <h4 class="h2-title">2.3全国公共关系策划大赛、大学生广告大赛作品</h4>
+    <div class="hscroll-container fade-in" style="margin-top:20px;">
+      <div class="file-card" style="flex:0 0 280px;">
+        <a href="大广赛作品.pptx" target="_blank">
+          <div class="file-thumb"><img src="assets/thumbs/thumb_daguangsai_cover.jpg" alt="大广赛作品" loading="lazy"></div>
+          <div class="file-info"><div class="file-name">大广赛作品</div><div class="file-type">PPTX 演示文稿</div></div>
+        </a>
+      </div>
+      <div class="file-card" style="flex:0 0 280px;">
+        <a href="公关大赛作品2.pptx" target="_blank">
+          <div class="file-thumb"><img src="assets/thumbs/thumb_gongguan2_cover.jpg" alt="公关大赛作品2" loading="lazy"></div>
+          <div class="file-info"><div class="file-name">公关大赛作品</div><div class="file-type">PPTX 演示文稿</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="data-journo" class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <h3 class="h1-title">3.数据新闻作品《成为父母，将是史上最艰难的决定吗——数说回避生育的三大因素》</h3>
+    <div class="highlight-card fade-in">
+      <div class="badge">第八届中国数据新闻大赛 · 全国三等奖</div>
+      <h3>成为父母，将是史上最艰难的决定吗——数说回避生育的三大因素</h3>
+      <p>从微观个体视角出发，先对社交媒体平台用户关于恐婚恐育的讨论进行内容分析，发现被提及最多的原因为经济原因，进而对生育成本进行估算，最后从国家层面探讨生育经济压力与生育率的关系，揭示当前我国生育率下降的部分原因。</p>
+      <a href="https://readymag.website/u901926341/4371451/" target="_blank" rel="noopener" class="view-link">查看完整作品 →</a>
+    </div>
+  </div>
+</section>
+<section id="writing" class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <h3 class="h1-title">4.文学创作</h3>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:24px;">2024年12月加入广州市南沙区作家协会，在官方公众号「南沙文学」发表多篇散文</p>
+    <div class="highlight-card fade-in">
+      <div class="badge">《散文选刊》2025年第2期 · 校园作家板块</div>
+      <h3>散文《泽》</h3>
+      <p>刊登于河南省文联主办的《散文选刊》2025年第2期总第539期。</p>
+      <a href="泽.png" target="_blank">
+        <div class="long-slider" style="margin-top:16px; cursor:pointer;">
+          <div class="long-slider-viewport" style="max-height:480px;">
+            <img src="assets/thumbs/thumb_ze.jpg" alt="散文《泽》">
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<section id="design" class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <h3 class="h1-title">5.美工与设计作品</h3>
+    <h4 class="h2-title">5.1中国移动产品宣传海报</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">广东省广告集团实习期间</p>
+    <div class="long-slider" style="max-width:680px;">
+      <div class="long-slider-viewport">
+        <img src="assets/thumbs/thumb_yidongyunpan_long.jpg" alt="移动云盘展厅">
+      </div>
+    </div>
+    <h4 class="h2-title">5.2「C刊面对面」学术论坛物料</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">为广东省社会科学联合会举办的学术交流活动设计物料</p>
+    <div class="gallery fade-in">
+      <div class="gallery-item"><img src="assets/thumbs/thumb_shekeyuan.jpg" alt="广东省社会科学院大楼设计" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/thumbs/thumb_mumianhua.jpg" alt="木棉花 最终版" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/thumbs/thumb_wushi.jpg" alt="舞狮 最终版" loading="lazy"></div>
+      <div class="gallery-item"><img src="assets/thumbs/thumb_wushi_shiwu.jpg" alt="舞狮实物" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+<section id="video" class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <h3 class="h1-title">6.视频作品</h3>
+    <h4 class="h2-title">6.1乡村振兴视频作品</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">2024.7 – 2024.8 · 广东省梅州市丰顺县融媒体中心实习 · 为乡村振兴代表人物拍摄视频报道</p>
+    <div class="video-wrapper fade-in">
+      <video controls preload="metadata" style="width:100%;" poster="assets/thumbs/thumb_video_cover.jpg">
+        <source src="游子返乡记.mp4" type="video/mp4">
+        您的浏览器不支持视频播放，请 <a href="游子返乡记.mp4">下载观看</a>
+      </video>
+    </div>
+    <h4 class="h2-title">6.2创意视频制作</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">通过流行的猫meme形式表达深刻社会议题，累计发布6期视频，播放量 1.7w+</p>
+    <div class="file-grid fade-in">
+      <div class="file-card">
+        <a href="https://www.bilibili.com/video/BV11N6KYNE83/?spm_id_from=333.1387.homepage.video_card.click" target="_blank" rel="noopener">
+          <div class="file-thumb"><img src="assets/thumbs/thumb_bili1_cover.jpg" alt="B站视频 1" loading="lazy"></div>
+          <div class="file-info"><div class="file-name">猫meme创意视频 ①</div><div class="file-type">B站链接</div></div>
+        </a>
+      </div>
+      <div class="file-card">
+        <a href="https://www.bilibili.com/video/BV199iUYoEaz/?spm_id_from=333.1387.homepage.video_card.click" target="_blank" rel="noopener">
+          <div class="file-thumb"><img src="assets/thumbs/thumb_bili2_cover.jpg" alt="B站视频 2" loading="lazy"></div>
+          <div class="file-info"><div class="file-name">猫meme创意视频 ②</div><div class="file-type">B站链接</div></div>
+        </a>
+      </div>
+    </div>
+    <h4 class="h2-title">6.3校园科普视频制作</h4>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;">为中山大学交叉探索平台拍摄宣传视频，发布于中山大学官方微信视频号</p>
+    <div class="file-card fade-in" style="max-width:400px;">
+      <a href="https://weixin.qq.com/sph/AHKKxYXEFT" target="_blank" rel="noopener">
+        <div class="file-thumb"><img src="assets/thumbs/thumb_jiaochatansuo_cover.jpg" alt="交叉探索平台" loading="lazy"></div>
+        <div class="file-info"><div class="file-name">中山大学交叉探索平台宣传视频</div><div class="file-type">微信视频号</div></div>
+      </a>
+  </div>
+</section>
+<footer id="contact">
+  <div class="copy">© 2026 王泽南</div>
+</footer>
+</main>
+<script>
+(function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+})();
+</script>
+</body>
+</html>
